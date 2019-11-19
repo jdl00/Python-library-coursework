@@ -24,19 +24,23 @@ def delete_from_text_file(string_to_delete,txt_file_to_delete_from):
     file.close()
     write_array_to_text_file(parsed_array,txt_file_to_delete_from)
 
+'''
+assuming that storage below is formatted such that a double space is a marker that it is at the end of the 
+place holder to make for extraction of data easier
+id title  Author Purchase Date Member ID
+1  BOOK 1 Tim    11/9/12       12345
+'''
 def parse_text_line(string_to_parse):
     final_parsed_array = []
-    temp_string_handler = str("")
+    previous_i_char = str("")
     temp_string_data_handler = str("")
+    string_to_parse+="  "
     for i in string_to_parse:
-        if temp_string_handler == "id":
-            if temp_string_data_handler[len(temp_string_data_handler) - 3:len(temp_string_data_handler)] != "tit":
-                final_parsed_array.append(temp_string_data_handler)
-                temp_string_handler = temp_string_data_handler[len(temp_string_data_handler) - 3:len(temp_string_data_handler)]
-
-
+        if i == " " and previous_i_char == " ":
+            final_parsed_array.append(temp_string_data_handler)
+            temp_string_data_handler = ""   
         else:
-            temp_string_handler += i 
+            temp_string_data_handler += i
 
     return final_parsed_array
 
