@@ -34,7 +34,7 @@ def parse_text_file(txt_file_to_parse):
 
 '''
 assuming that storage below is formatted such that a double space is a marker that it is at the end of the 
-place holder to make for extraction of data easier
+place holder, to make for extraction of data easier
 id title  Author Purchase Date Member ID
 1  BOOK 1 Tim    11/9/12       12345
 '''
