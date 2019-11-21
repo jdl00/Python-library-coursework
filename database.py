@@ -40,11 +40,11 @@ id title  Author Purchase Date Member ID
 '''
 def parse_each_text_line(string_to_parse):
     final_parsed_array = []
-    previous_i_char = str("")
+    previous_char = char('')
     temp_string_data_handler = str("")
     string_to_parse+="  "
     for i in string_to_parse:
-        if i == " " and previous_i_char == " ":
+        if i == " " and previous_char == " ":
             final_parsed_array.append(temp_string_data_handler)
             temp_string_data_handler = ""   
         else:
