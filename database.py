@@ -24,13 +24,21 @@ def delete_from_text_file(string_to_delete,txt_file_to_delete_from):
     file.close()
     write_array_to_text_file(parsed_array,txt_file_to_delete_from)
 
+def parse_text_file(txt_file_to_parse):
+    parsed_array = []
+    file = open(txt_file_to_parse,"r")
+    for line in file:
+        parsed_array.append(line)
+    file.close()
+    return parsed_array
+
 '''
 assuming that storage below is formatted such that a double space is a marker that it is at the end of the 
 place holder to make for extraction of data easier
 id title  Author Purchase Date Member ID
 1  BOOK 1 Tim    11/9/12       12345
 '''
-def parse_text_line(string_to_parse):
+def parse_each_text_line(string_to_parse):
     final_parsed_array = []
     previous_i_char = str("")
     temp_string_data_handler = str("")
@@ -58,11 +66,11 @@ def write_to_text_file(string_to_write,txt_file_to_write):
     file.write(string_to_write.lower())
     file.close() 
 
-def parse_text_file(txt_file_to_parse):
-    parsed_array = []
-    file = open(txt_file_to_parse,"r")
-    for i in file:
-        parsed_array.append(i)
-    file.close()
+def extract_data_from_text_file(txt_file_to_parse):
+    final_extracted_array = []
+    parsed_array = parse_each_text_line(parse_text_file(txt_file_to_parse))
     return parsed_array
+
+
+
     
