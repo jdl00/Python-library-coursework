@@ -59,6 +59,19 @@ def write_array_to_text_file(array_to_write,txt_file_to_write):
         file.write(i+'\n')
     file.close()
 
+def return_parsed_data(string_to_search_for, should_use_log):
+    file = None
+    if !should_use_log:
+        file = open("database.txt","r")
+        for i in file:
+            if string_to_search_for in file:
+                return parse_each_text_line(i)
+    else:
+        file = open("log.txt","r")
+        for i in file:
+            if string_to_search_for in file:
+                return parse_each_text_line(i)
+
 
 def write_to_text_file(string_to_write,txt_file_to_write):
     string_to_write += "\n"
