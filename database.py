@@ -42,11 +42,14 @@ def parse_each_text_line(list_to_parse):
 
     return final_parsed_array
 
+def format_array_for_writing(unformatted_string): #check the length of 
+    formatted_string = str("")
 
-def write_array_to_text_file(array_to_write,txt_file_to_write):
-    file = open(txt_file_to_write,"w")
-    for i in array_to_write:
-        file.write(i+'\n')
+def write_data_to_text_file(array_to_write,should_use_log):
+    if should_use_log:
+        file = open("log.txt","w")
+    else:
+        file = open("database.txt","w")
     file.close()
 
 def return_parsed_data(string_to_search_for, should_use_log):
@@ -61,12 +64,6 @@ def return_parsed_data(string_to_search_for, should_use_log):
             unparsed_searched_terms.append(i)
     file.close()
     return parse_each_text_line(unparsed_searched_terms)
-
-def write_to_text_file(string_to_write,txt_file_to_write):
-    string_to_write += "\n"
-    file = open(txt_file_to_write,"w")
-    file.write(string_to_write.lower())
-    file.close() 
 
 
 
