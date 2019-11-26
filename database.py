@@ -6,23 +6,15 @@ contains common database functions such as
 4) the string returned from parse returns a string of id, title, Author, Purchase Date, Member ID
 '''
 
-def query_database(string_to_search_for,txt_file_to_search):
-    parsed_array = parse_text_file(txt_file_to_search)
-    for i in parsed_array:
-        if i.lower() == string_to_search_for.lower():
-            return true
-    return false
-
 def delete_from_text_file(string_to_delete,txt_file_to_delete_from):
-    if query_database(string_to_delete,txt_file_to_delete_from)
-        return   
-    parsed_array = parse_text_file(txt_file_to_delete_from)
-    string_to_delete = string_to_delete.lower()
-    parsed_array.remove(string_to_delete)
-    file = open(txt_file_to_delete_from,"r+")
-    file.truncate(0)
-    file.close()
-    write_array_to_text_file(parsed_array,txt_file_to_delete_from)
+    with open('file_path', 'r+') as file:
+        if string_to_delete not in file:
+            return 
+        parsed_array = parse_text_file(txt_file_to_delete_from)
+        string_to_delete = string_to_delete.lower()
+        parsed_array.remove(string_to_delete)
+        file.truncate(0)
+        write_array_to_text_file(parsed_array,txt_file_to_delete_from)
 
 def parse_text_file(txt_file_to_parse):
     parsed_array = []
@@ -38,17 +30,15 @@ place holder, to make for extraction of data easier
 id title  Author Purchase Date Member ID
 1  BOOK 1 Tim    11/9/12       12345
 '''
-def parse_each_text_line(string_to_parse):
+
+def format_string_for_handling(string_to_handle):
+    return string_to_handle.replace(' ','|')
+
+
+def parse_each_text_line(list_to_parse):
     final_parsed_array = []
-    previous_char = char('')
-    temp_string_data_handler = str("")
-    string_to_parse+="  "
-    for i in string_to_parse:
-        if i == " " and previous_char == " ":
-            final_parsed_array.append(temp_string_data_handler)
-            temp_string_data_handler = ""   
-        else:
-            temp_string_data_handler += i
+    for i in list_to_parse:
+        final_parsed_array.append(format_string_for_handling(i))
 
     return final_parsed_array
 
@@ -61,17 +51,16 @@ def write_array_to_text_file(array_to_write,txt_file_to_write):
 
 def return_parsed_data(string_to_search_for, should_use_log):
     file = None
+    unparsed_searched_terms = []
     if !should_use_log:
         file = open("database.txt","r")
-        for i in file:
-            if string_to_search_for in file:
-                return parse_each_text_line(i)
     else:
         file = open("log.txt","r")
-        for i in file:
-            if string_to_search_for in file:
-                return parse_each_text_line(i)
-
+    for i in file:
+        if string_to_search_for in i:
+            unparsed_searched_terms.append(i)
+    file.close()
+    return parse_each_text_line(unparsed_searched_terms)
 
 def write_to_text_file(string_to_write,txt_file_to_write):
     string_to_write += "\n"
@@ -79,10 +68,6 @@ def write_to_text_file(string_to_write,txt_file_to_write):
     file.write(string_to_write.lower())
     file.close() 
 
-def extract_data_from_text_file(txt_file_to_parse):
-    final_extracted_array = []
-    parsed_array = parse_each_text_line(parse_text_file(txt_file_to_parse))
-    return parsed_array
 
 
 
