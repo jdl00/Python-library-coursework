@@ -13,11 +13,19 @@ class data_generator:
 	def write_line(self,string_to_write):
 
 	def generated_sample_data(self):
+		instantised_data = str("")
+		name = parse_JSON()[rand.randint(0,100)]
+
+		return instantised_data
 
 	def parse_JSON(self):
 
 	def write_sample_data(self):
-		self.__num_data_entries__ = int(input("enter number of entries to enter"))
+		try:
+			self.__num_data_entries__ = int(input("enter number of entries to enter"))
+		except:
+			raise Exception("non natural number entered ") 
+
 		for i in range(self.__num_data_entries__):
 			write_line(self,generated_sample_data(self))
 
