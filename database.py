@@ -58,13 +58,17 @@ def get_line_formatting_length(string_to_check): #return an array signifying the
     return length_array
 
 
-def format_array_for_writing(unformatted_string,should_use_log): #initial titles at the top of the file denote 
+def format_array_for_writing(unformatted_array,should_use_log): #initial titles at the top of the file denote 
     file_to_use = "log.txt" if should_use_log else "database.txt"
     formatting_lengths = []                    #the spaces availible for each category if the length
-    formatted_string = str("")
+    formatted_array = str("")
     with open(file_to_use,"r") as file:
         formatting_lengths = get_line_formatting_length(file.readline())  #exceeds this length then append spaces to fit correctly 
-    
+    for i in range(len(unformatted_array)):
+        if formatting_lengths < len(unformatted_array[i])
+            #call adjustment function
+        else:
+            #write function that handles the formatting of the string using the amount of spaces in between them
 
 def write_data_to_text_file(array_to_write,should_use_log):
     file_to_use = "log.txt" if should_use_log else "database.txt"
