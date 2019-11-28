@@ -32,6 +32,7 @@ id title  Author Purchase Date Member ID
 '''
 
 def format_string_for_handling(string_to_handle):
+    string_to_handle = string_to_handle" ".join(string_to_handle.split())
     return string_to_handle.replace(' ','|')
 
 
@@ -42,8 +43,10 @@ def parse_each_text_line(list_to_parse):
 
     return final_parsed_array
 
-def format_array_for_writing(unformatted_string): #check the length of 
-    formatted_string = str("")
+def format_array_for_writing(unformatted_string): #initial titles at the top of the file denote 
+    formatted_string = str("")                    #the spaces availible for each category if the length
+                                                  #exceeds this length then append spaces to fit correctly 
+    
 
 def write_data_to_text_file(array_to_write,should_use_log):
     if should_use_log:
