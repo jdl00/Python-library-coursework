@@ -16,9 +16,10 @@ def delete_from_text_file(string_to_delete,txt_file_to_delete_from):
         file.truncate(0)
         write_array_to_text_file(parsed_array,txt_file_to_delete_from)
 
+
 def parse_text_file(txt_file_to_parse):
     parsed_array = []
-    file = open(txt_file_to_parse,"r")
+    with open(txt_file_to_parse,"r")
     for line in file:
         parsed_array.append(line)
     file.close()
@@ -43,9 +44,17 @@ def parse_each_text_line(list_to_parse):
 
     return final_parsed_array
 
-def format_array_for_writing(unformatted_string): #initial titles at the top of the file denote 
+def get_line_formatting_length(string_to_check): #return an array signifying the length of the each of the columns of data
+    
+
+
+
+
+def format_array_for_writing(unformatted_string,use_active_format): #initial titles at the top of the file denote 
+    file_to_use = "database.txt" if use_active_format else "log.txt"
     formatted_string = str("")                    #the spaces availible for each category if the length
-                                                  #exceeds this length then append spaces to fit correctly 
+    with open(file_to_use,"r") as file:
+        first_line_for_formatting = file.readline()  #exceeds this length then append spaces to fit correctly 
     
 
 def write_data_to_text_file(array_to_write,should_use_log):
