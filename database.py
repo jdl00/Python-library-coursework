@@ -6,23 +6,24 @@ contains common database functions such as
 4) the string returned from parse returns a string of id, title, Author, Purchase Date, Member ID
 '''
 
-def delete_from_text_file(string_to_delete,txt_file_to_delete_from):
+def delete_from_text_file(string_to_delete,should_use_log):
+    file_to_use = "log.txt" if should_use_log else "database.txt"
     with open('file_path', 'r+') as file:
         if string_to_delete not in file:
             return 
-        parsed_array = parse_text_file(txt_file_to_delete_from)
+        parsed_array = parse_text_file(file_to_use)
         string_to_delete = string_to_delete.lower()
         parsed_array.remove(string_to_delete)
         file.truncate(0)
-        write_array_to_text_file(parsed_array,txt_file_to_delete_from)
+        write_array_to_text_file(parsed_array,file_to_use)
 
 
-def parse_text_file(txt_file_to_parse):
+def parse_text_file(should_use_log):
     parsed_array = []
-    with open(txt_file_to_parse,"r")
-    for line in file:
-        parsed_array.append(line)
-    file.close()
+    file_to_use = "log.txt" if should_use_log else "database.txt"
+    with open(file_to_use,"r"):
+        for line in file:
+            parsed_array.append(line)
     return parsed_array
 
 '''
@@ -45,32 +46,37 @@ def parse_each_text_line(list_to_parse):
     return final_parsed_array
 
 def get_line_formatting_length(string_to_check): #return an array signifying the length of the each of the columns of data
-    
+    length_array = []
+    previous_i_char = char('')
+    length_count = int(0)
+    for i in string_to_check:
+        if previous_i_char == ' ' and i != ' '
+            length_array.append(length_count)
+            length_count = 0
+        else if previous_i_char != ' ' and i !=  ' ':
+            length_count += 1
+    return length_array
 
 
-
-
-def format_array_for_writing(unformatted_string,use_active_format): #initial titles at the top of the file denote 
-    file_to_use = "database.txt" if use_active_format else "log.txt"
-    formatted_string = str("")                    #the spaces availible for each category if the length
+def format_array_for_writing(unformatted_string,should_use_log): #initial titles at the top of the file denote 
+    file_to_use = "log.txt" if should_use_log else "database.txt"
+    formatting_lengths = []                    #the spaces availible for each category if the length
+    formatted_string = str("")
     with open(file_to_use,"r") as file:
-        first_line_for_formatting = file.readline()  #exceeds this length then append spaces to fit correctly 
+        formatting_lengths = get_line_formatting_length(file.readline())  #exceeds this length then append spaces to fit correctly 
     
 
 def write_data_to_text_file(array_to_write,should_use_log):
-    if should_use_log:
-        file = open("log.txt","w")
-    else:
-        file = open("database.txt","w")
-    file.close()
+    file_to_use = "log.txt" if should_use_log else "database.txt"
+    with open(file_to_use,"w+") as file:
+        if file.write(format_array_for_writing(array_to_write)) == False:
+            return False
+
+    return True
 
 def return_parsed_data(string_to_search_for, should_use_log):
-    file = None
     unparsed_searched_terms = []
-    if !should_use_log:
-        file = open("database.txt","r")
-    else:
-        file = open("log.txt","r")
+    file_to_use = "log.txt" if should_use_log else "database.txt" 
     for i in file:
         if string_to_search_for in i:
             unparsed_searched_terms.append(i)
