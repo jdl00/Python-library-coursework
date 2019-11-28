@@ -80,11 +80,11 @@ def write_data_to_text_file(array_to_write,should_use_log):
 
 def return_parsed_data(string_to_search_for, should_use_log):
     unparsed_searched_terms = []
-    file_to_use = "log.txt" if should_use_log else "database.txt" 
-    for i in file:
-        if string_to_search_for in i:
-            unparsed_searched_terms.append(i)
-    file.close()
+    file_to_use = "log.txt" if should_use_log else "database.txt"
+    with open(file_to_use,"r") as file:
+        for i in file:
+            if string_to_search_for in i:
+                unparsed_searched_terms.append(i)
     return parse_each_text_line(unparsed_searched_terms)
 
 
