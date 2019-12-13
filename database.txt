@@ -1,7 +1,7 @@
-1|Harry Potter|JK Rowling|4/5/1999|0|
+1|Harry Potter|JK Rowling|4/5/1999|1456|
 2|Lord of the Ring|JRR Tolken|4/7/1987|1950|
 3|Twilight|stephanie Myer|16/7/2005|4005|
-4|Diary Of Wimpy Kid|Jeff Kinney|19/8/2008|0|
+4|Diary Of Wimpy Kid|Jeff Kinney|19/8/2008|1932|
 5|Moby Dick|Herman Melville|23/2/2009|6779|
 6|Hamelet|William Shakespeare|9/11/2001|0|
 7|Lolita|Vladmir Nabokov|19/9/2013|1500|

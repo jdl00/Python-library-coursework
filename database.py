@@ -28,7 +28,6 @@ def append_text_file(member_id,book_id):
     for i in range(len(new_array_to_write)):
         current_parsed_line = parse_text_line(new_array_to_write[i])
         if int(current_parsed_line[0]) == int(book_id):
-            print(current_parsed_line)
             current_parsed_line[4] = str(member_id)
             new_array_to_write[i] = format_array_for_writing(current_parsed_line)
     with open("database.txt","w+") as file:
@@ -51,14 +50,6 @@ def append_data(string_to_write,should_use_log):
     file_to_use = "log.txt" if should_use_log else "database.txt"
     with open(file_to_use,"a") as file:
         file.write(string_to_write)
-
-
-def clear_file_data(should_use_log):
-    file_to_use = "log.txt" if should_use_log else "database.txt"
-    file = open(file_to_use,"w")
-    file.seek(0)
-    file.truncate()
-    file.close()
 
 
 def parse_text_line(unparsed_array):
