@@ -31,8 +31,6 @@ def append_text_file(member_id,book_id):
             print(current_parsed_line)
             current_parsed_line[4] = str(member_id)
             new_array_to_write[i] = format_array_for_writing(current_parsed_line)
-
-    #clear_file_data(False)
     with open("database.txt","w+") as file:
         for i in new_array_to_write:
             file.write(i)
@@ -46,7 +44,7 @@ def log_action(member_id,book_id,date,checkout):
     array_to_format.append(date)
     array_to_format.append(checkout)
     append_data(format_array_for_writing(array_to_format),True)
-    
+
 
 
 def append_data(string_to_write,should_use_log):

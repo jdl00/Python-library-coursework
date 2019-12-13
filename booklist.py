@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from database import *
 
 active_book = []
@@ -14,19 +14,22 @@ predict whether itll be a popular book
 also the frequency of which the book is on loan
 '''
 
+def sort_list(array_to_sort):
+    array_to_sort.sort(key = lambda x: x[1])
+    return array_to_sort
 
 def determine_popularity_of_books():
-    global active_book
     global log_book
-    currentdate = date.today()
+    currentdate = datetime.today().strftime('%Y-%m-%d')
     most_taken_out = []
     most_popular_for_current_season = []
     newest_books = []
     temp_string_storage = str("")
     temp_num_storage = int(0)
-    active_book = parse_text_file(False)
     log_book = parse_text_file(True)
-    final_popularity_array = [""] * len(most_taken_out)
+    final_popularity_array = [""] * (len(most_taken_out)*3)
+
+
     for i in range(len(most_taken_out)):
         temp_string_storage = most_taken_out[i]
         temp_num_storage = most_popular_for_current_season.index(temp_string_storage) + i + newest_books.index(temp_string_storage)

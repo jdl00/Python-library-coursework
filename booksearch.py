@@ -1,16 +1,13 @@
-import database
-parsed_global_data[]
+from database import *
 
 
-def query_database_by_text(string_to_search_for,should_use_log):
-	global parsed_global_data		
-	parsed_global_data = extract_data_from_text_file("log.txt") if should_use_log else extract_data_from_text_file("database.txt")
-	if string_to_search_for in parsed_global_data:
-		return return_parsed_data(string_to_search_for,should_use_log) #should return an array and let the menu deal with formatting
+def query_database_by_text(string_to_search_for):
+        selected_data = []
+        unparsed_data = parse_text_file(False)
+        for i in unparsed_data:
+                if parse_text_line(i)[1].lower() == string_to_search_for.lower():
+                        selected_data.append(i[:-2])
 
 
+        return selected_data
 
-
-
-
-	
