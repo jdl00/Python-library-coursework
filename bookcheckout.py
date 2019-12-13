@@ -14,7 +14,7 @@ def check_if_book_is_availible(book_id_search):
             check_boolean = True
     return check_boolean
 
-def checkout_book(member_id,book_id):
+def checkout_book(member_id,book_id):#does all the criteria checks and returns the data based on whether it works correctly
     try:
         if member_id == "0000" or int(member_id) < 1000 or int(member_id) > 9999:
             return "invalid member id!"

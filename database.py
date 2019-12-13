@@ -23,7 +23,7 @@ def format_array_for_writing(unformatted_array): #initial titles at the top of t
         final_formatted_string += str(i)+"|"
     return final_formatted_string+"\n"
 
-def append_text_file(member_id,book_id):
+def append_text_file(member_id,book_id): #clears the file then rewrites the new array
     new_array_to_write = parse_text_file(False)
     for i in range(len(new_array_to_write)):
         current_parsed_line = parse_text_line(new_array_to_write[i])
@@ -37,7 +37,7 @@ def append_text_file(member_id,book_id):
 
 
 def log_action(member_id,book_id,date,checkout):
-    array_to_format = []
+    array_to_format = [] #logs actions to the log database
     array_to_format.append(member_id)
     array_to_format.append(book_id)
     array_to_format.append(date)
@@ -46,7 +46,7 @@ def log_action(member_id,book_id,date,checkout):
 
 
 
-def append_data(string_to_write,should_use_log):
+def append_data(string_to_write,should_use_log): #appends data at the end
     file_to_use = "log.txt" if should_use_log else "database.txt"
     with open(file_to_use,"a") as file:
         file.write(string_to_write)
@@ -54,7 +54,7 @@ def append_data(string_to_write,should_use_log):
 
 def parse_text_line(unparsed_array):
     parsed_array = []
-    string_former = str("")
+    string_former = str("") #seperates out the data into the an array of the data
     for i in unparsed_array:
         if i == "|":
             parsed_array.append(string_former)
@@ -63,7 +63,7 @@ def parse_text_line(unparsed_array):
             string_former += i
     return parsed_array
 
-def parse_text_file(should_use_log):
+def parse_text_file(should_use_log): #unloads the txt file data
     unparsed_array = []
     file_to_use = "log.txt" if should_use_log else "database.txt"
     with open(file_to_use,"r") as file:

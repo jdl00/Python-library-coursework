@@ -2,6 +2,7 @@ from tkinter import *
 from bookcheckout import *
 from bookreturn import *
 from booksearch import *
+from booklist import *
 def call_checkout():
         text_1.delete('1.0', END)
         status_code = checkout_book(entry_1.get(),entry_2.get())
@@ -22,7 +23,11 @@ def call_search():
                 text_1.insert(END,x+"\n")
 
 def display_popular():
-        print("hey")
+        text_1.delete('1.0', END)
+        text_to_print = []
+        text_to_print = determine_popularity_of_books()
+        for x in text_to_print:
+                text_1.insert(END,x+"\n")
                  
         
 
